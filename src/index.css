@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 220 25% 6%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 20% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 20% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 210 100% 24%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 45 100% 55%;
+    --secondary-foreground: 220 25% 6%;
+
+    --muted: 220 20% 15%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 45 100% 55%;
+    --accent-foreground: 220 25% 6%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 210 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* UNEB Brand Colors */
+    --uneb-blue: 210 100% 24%;
+    --uneb-blue-light: 210 100% 35%;
+    --uneb-yellow: 45 100% 55%;
+    --uneb-yellow-dark: 45 100% 45%;
+    
+    /* Kiosk Specific */
+    --kiosk-bg: 220 25% 6%;
+    --kiosk-header: 210 100% 20%;
+    --kiosk-card: 220 20% 10%;
+    --kiosk-text-primary: 0 0% 98%;
+    --kiosk-text-secondary: 0 0% 75%;
+    --kiosk-accent: 45 100% 55%;
+    
+    /* Gradients */
+    --gradient-header: linear-gradient(135deg, hsl(210 100% 24%) 0%, hsl(210 100% 16%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(220 20% 12%) 0%, hsl(220 20% 8%) 100%);
+    --gradient-overlay: linear-gradient(0deg, hsl(220 25% 6% / 0.95) 0%, hsl(220 25% 6% / 0.7) 100%);
+    
+    /* Shadows */
+    --shadow-header: 0 4px 20px hsl(210 100% 10% / 0.5);
+    --shadow-card: 0 8px 32px hsl(220 25% 3% / 0.6);
+    --shadow-glow: 0 0 40px hsl(45 100% 55% / 0.25);
+    
+    /* Animations */
+    --transition-smooth: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.3s ease-in-out;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-hidden;
+    cursor: none; /* Kiosk mode - hide cursor */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  
+  /* Prevent text selection in kiosk mode */
+  * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+}
+
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 20px hsl(var(--uneb-yellow) / 0.5);
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.6s ease-in;
+  }
+  
+  .fade-out {
+    animation: fadeOut 0.6s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
+  
+  .slide-in {
+    animation: slideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
